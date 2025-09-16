@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Selection - SchoolHub</title>
+    <link rel="stylesheet" href="subject-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>SchoolHub</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <ul>
+                    <li><i class="fas fa-th-large"></i><span>Dashboard</span></li>
+                    <li class="active"><i class="fas fa-book"></i><span>Subjects</span></li>
+                    <li><i class="fas fa-bullhorn"></i><span>Announcements</span></li>
+                    <li><i class="fas fa-tasks"></i><span>Assignments</span></li>
+                    <li><i class="fas fa-sticky-note"></i><span>Notes</span></li>
+                    <li><i class="fas fa-calendar"></i><span>Schedule</span></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1 id="page-title">What subjects are you interested in today?</h1>
+                <div class="header-actions">
+                    <button class="btn-secondary" id="add-subject-btn">
+                        <i class="fas fa-plus"></i> Add Custom Subject
+                    </button>
+                    <div class="user-info">
+                        <span id="user-name">Loading...</span>
+                        <img src="/placeholder.svg?height=40&width=40" alt="Profile" class="profile-img">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Subject Selection Grid -->
+            <div class="subjects-container">
+                <div class="subjects-grid" id="subjects-grid">
+                    <!-- Subjects will be loaded here -->
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-primary" id="save-selection">
+                        <i class="fas fa-save"></i> Save Selection
+                    </button>
+                    <button class="btn-secondary" id="analytics-btn">
+                        <i class="fas fa-chart-bar"></i> Analytics
+                    </button>
+                </div>
+            </div>
+
+            <!-- Selected Subjects Summary -->
+            <div class="selected-summary" id="selected-summary">
+                <h3>Selected Subjects</h3>
+                <div class="selected-list" id="selected-list">
+                    <!-- Selected subjects will appear here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Subject Modal -->
+    <div class="modal" id="add-subject-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Custom Subject</h2>
+                <button class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <form id="add-subject-form">
+                <div class="form-group">
+                    <label for="subject-name">Subject Name</label>
+                    <input type="text" id="subject-name" name="subject_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject-code">Subject Code</label>
+                    <input type="text" id="subject-code" name="subject_code" maxlength="10">
+                </div>
+                <div class="form-group">
+                    <label for="subject-description">Description</label>
+                    <textarea id="subject-description" name="description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="color-theme">Color Theme</label>
+                    <div class="color-picker">
+                        <input type="color" id="color-theme" name="color_theme" value="#667eea">
+                        <div class="color-presets">
+                            <div class="color-preset" data-color="#3b82f6"></div>
+                            <div class="color-preset" data-color="#f59e0b"></div>
+                            <div class="color-preset" data-color="#ef4444"></div>
+                            <div class="color-preset" data-color="#10b981"></div>
+                            <div class="color-preset" data-color="#8b5cf6"></div>
+                            <div class="color-preset" data-color="#ec4899"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="icon-class">Icon</label>
+                    <div class="icon-picker">
+                        <input type="text" id="icon-class" name="icon_class" value="fas fa-book" readonly>
+                        <div class="icon-grid">
+                            <i class="fas fa-book" data-icon="fas fa-book"></i>
+                            <i class="fas fa-calculator" data-icon="fas fa-calculator"></i>
+                            <i class="fas fa-atom" data-icon="fas fa-atom"></i>
+                            <i class="fas fa-flask" data-icon="fas fa-flask"></i>
+                            <i class="fas fa-dna" data-icon="fas fa-dna"></i>
+                            <i class="fas fa-globe" data-icon="fas fa-globe"></i>
+                            <i class="fas fa-laptop-code" data-icon="fas fa-laptop-code"></i>
+                            <i class="fas fa-palette" data-icon="fas fa-palette"></i>
+                            <i class="fas fa-music" data-icon="fas fa-music"></i>
+                            <i class="fas fa-running" data-icon="fas fa-running"></i>
+                            <i class="fas fa-chart-line" data-icon="fas fa-chart-line"></i>
+                            <i class="fas fa-microscope" data-icon="fas fa-microscope"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancel-add">Cancel</button>
+                    <button type="submit" class="btn-primary">Add Subject</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+        <p>Loading subjects...</p>
+    </div>
+
+    <script src="subject-selection.js"></script>
+</body>
+</html>
